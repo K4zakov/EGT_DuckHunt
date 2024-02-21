@@ -1,20 +1,27 @@
-// DuckHunt.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <SDL.h>
+#include <SDL_image.h>
+#include "Game.h"
+Game* game = NULL;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+int main(int argc, char* argv[]) {
+
+	game = new Game();
+	game->init("My new window",
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		WINDOW_WIDTH, WINDOW_HEIGHT,
+		SDL_WINDOW_RESIZABLE);
+	while (game->isRunning()) {
+		game->handleEvents();	
+		game->update();
+		game->render();
+	}
+	
+	
+	game->clean();
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
