@@ -27,3 +27,11 @@ void Duck::update() {
     if (rect.y < 0 || rect.y + rect.h > 600)
         velocityY = -velocityY;
 }
+
+void Duck::handleClick(int mouseX, int mouseY) {
+    // Check if the mouse click is within the bird's rectangle
+    if (mouseX >= rect.x && mouseX <= rect.x + rect.w && mouseY >= rect.y && mouseY <= rect.y + rect.h) {
+        // Move the bird down by a certain amount when clicked
+        rect.y += 1000;  
+    }
+}

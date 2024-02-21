@@ -8,6 +8,7 @@ public:
     ~Duck();
     void update();
     void render();
+    void handleClick(int mouseX, int mouseY);
 
 private:
     SDL_Texture* texture;

@@ -67,10 +67,20 @@ void Game::render() {
 void Game::handleEvents() {
 	
 	SDL_Event event;
-	if (SDL_PollEvent(&event)) {
+	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-		case SDL_QUIT: running = false; break;
-		default: break;
+		case SDL_QUIT:
+			
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			if (event.button.button == SDL_BUTTON_LEFT) {
+				int mouseX, mouseY;
+				SDL_GetMouseState(&mouseX, &mouseY);
+				duck->handleClick(mouseX, mouseY);
+			}
+			break;
+		default:
+			break;
 		}
 	}
 }
