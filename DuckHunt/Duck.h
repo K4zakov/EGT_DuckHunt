@@ -9,6 +9,8 @@ public:
     void update();
     void render();
     void handleClick(int mouseX, int mouseY);
+    bool hitBottom() const { return hasHitBottom; }
+
 
 private:
     SDL_Texture* texture;
@@ -16,5 +18,7 @@ private:
     SDL_Rect rect;
     int velocityX;
     int velocityY;
+    bool isClicked; // Track whether the duck has been clicked
+    bool hasHitBottom;
 };
 
